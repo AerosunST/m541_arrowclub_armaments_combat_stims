@@ -1,0 +1,11 @@
+"vertexlitgeneric"
+{
+	"$basetexture"               "models/weapons/v_models/arc_vm_healthshot/shot_photohalo"
+	"$phongboost"                "1"
+	"$phongexponent"             "10"
+	"$phongfresnelranges"        "[1 4 30]"
+	"$basemapluminancephongmask" "1"
+	"$halflambert"               "1"
+	"$phong"                     "1"
+	"$selfillum"                 "1"
+}
