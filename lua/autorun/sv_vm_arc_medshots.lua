@@ -135,8 +135,7 @@ hook.Add("PlayerSpawn", "ArcticMedShots_PlayerSpawn", function(ply)
         end
 
         ply.OriginalJumpPower = ply:GetJumpPower()
-        --        ply.OriginalGravity = ply:GetGravity() -- to anyone who knows how Gravity works in Gmod, please let me know immediately @spennytommy on Discord. I will happily credit you for helping me to get this to work.
-
+        ply.BaselineGravity = ply:GetGravity() -- WE PUT THIS FUCKER HERE IN CASE SOMETHING WANTS TO OVERWRITE IT - EVEN US - AAAAAAAAAAAAAAASEUJIFGBWIUFGHIUHSAERUIOGH
         ArcticMedShots_PendingEffects = new
     end)
 end)

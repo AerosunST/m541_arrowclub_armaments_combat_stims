@@ -345,7 +345,11 @@ ArcticMedShots = {
         Description = { "Reduces Player Gravity by 90% for 120 Seconds", "Allergen Information: Contains WMV." },
         DescriptionColors = { COLOR_GOOD, COLOR_NEUTRAL },
         OnInject = function(ply, infl)
-            ply.BaselineGravity = ply:GetGravity() -- this is so we can get the original gravity back, even if it's bumfuck zero or 21
+            if not ply.BaselineGravity or ply.BaselineGravity ~= ply:GetGravity() then
+                print("[AACS] NUH UH (BaselineGravity doesn't exist or has been modified prior to stim use)")
+                return
+            end
+
             ply:SetGravity(0.1667)
             --[[
                 HEY TOMMY HAIIII
