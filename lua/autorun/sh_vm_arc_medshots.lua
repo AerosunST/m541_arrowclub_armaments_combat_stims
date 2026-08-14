@@ -559,8 +559,10 @@ hook.Add("EntityTakeDamage", "ArcticMedShots_EntityTakeDamage", function(ply, dm
 
     ply.ArcticMedShots_ActiveEffects = ply.ArcticMedShots_ActiveEffects or {}
 
-    if ArcticMedShots_GetEffect(ply, "fx_resist_elements") and dmg:GetDamageType() == DMG_BURN or dmg:GetDamageType() == DMG_SLOWBURN or dmg:GetDamageType() == DMG_POISON or dmg:GetDamageType() == DMG_ACID or dmg:GetDamageType() == DMG_SHOCK or dmg:GetDamageType() == DMG_RADIATION or dmg:GetDamageType() == DMG_PLASMA or dmg:GetDamageType() == DMG_DROWN then
-        dmg:ScaleDamage(0)
+    if ArcticMedShots_GetEffect(ply, "fx_resist_elements") then
+        if dmg:GetDamageType() == DMG_BURN or dmg:GetDamageType() == DMG_SLOWBURN or dmg:GetDamageType() == DMG_POISON or dmg:GetDamageType() == DMG_ACID or dmg:GetDamageType() == DMG_SHOCK or dmg:GetDamageType() == DMG_RADIATION or dmg:GetDamageType() == DMG_PLASMA or dmg:GetDamageType() == DMG_DROWN then
+            dmg:ScaleDamage(0)
+        end
     end
 
     if ArcticMedShots_GetEffect(ply, "fx_invulnerability") then
