@@ -393,6 +393,9 @@ ArcticMedShots = {
     -- }
 }
 
+local aacs_lobotomy_sound = CreateSound(game.GetWorld(), "sound/weapons/arc_vm_medshot/lobotomy-sound-effect.wav")
+local aacs_fah_sound = CreateSound(game.GetWorld(), "sound/weapons/arc_vm_medshot/fah.wav")
+
 for _, v in pairs(file.Find("arctic_med_shots/*", "LUA")) do
     include("arctic_med_shots/" .. v)
     AddCSLuaFile("arctic_med_shots/" .. v)
@@ -462,6 +465,22 @@ function ArcticMedShots_ApplyEffect(ply, effect, duration, delay, infl)
             net.WriteUInt(math.floor(duration), 32)
             net.Broadcast()
         end
+        wmv(ply)
+    end
+end
+
+function wmv(ply)
+    if SERVER then return end
+    local function jumpscare()
+        aacs_lobotomy_sound.Play(ply)
+    end
+    if not ply.AACS_VMWFirstUse or player.AACS_VMWFirstUse == 0 then
+        print(ply.AACS_VMWFirstUse, "[AACS] hi")
+        ply.AACS_VMWFirstUse = 1
+    elseif ply.AACS_VMWFirstUse == 1 then
+        print("[AACS] first use already exists and is one")
+    else
+        print("[AACS] failed to have the player variable!!")
     end
 end
 
