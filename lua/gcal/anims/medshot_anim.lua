@@ -1,6 +1,10 @@
 AddCSLuaFile()
 local addonName = "Arrowclub Armanents Combat Stims"
 -- M541 change this (^^^^^^^^) is if I am wrong ~Midawek
+if not GCAL then
+    ErrorNoHaltWithStack("GCAL is not present, make sure you have GCAL otherwise this addon won't work!")
+    return
+end
 GCAL:RegisterAnim("arc_vm_medshot_inject",
     {
         model = "weapons/c_mifl_vm_medshot.mdl",

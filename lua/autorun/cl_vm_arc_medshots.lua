@@ -1,5 +1,5 @@
 if SERVER then return end
-
+if not GCAL then return end
 local ArcticMedShots_Owned = {} -- a table of all the stuff we probably own
 
 net.Receive("vm_arc_medshot_effect", function(len, ply)
