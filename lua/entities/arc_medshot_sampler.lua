@@ -3,6 +3,7 @@ AddCSLuaFile()
 ENT.PrintName = "Combat Stim Variety Pack"
 ENT.Spawnable = true
 ENT.Category = "Arrowclub Armaments Combat Stims"
+ENT.SubCategory = "StimPacks"
 ENT.Type = "anim"
 ENT.Base = "arc_medshot_base"
 
