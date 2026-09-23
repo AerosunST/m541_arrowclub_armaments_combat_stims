@@ -14,6 +14,8 @@ net.Receive("vm_arc_medshot_effect", function(len, ply)
     tgt.ArcticMedShots_ActiveEffects[effect] = CurTime() + duration
 end)
 
+
+
 -- receive data from server about our medshot inventory
 net.Receive("vm_arc_medshot_sync", function(len, ply)
     LocalPlayer().ArcticMedShots_Inv = {}
@@ -74,6 +76,7 @@ local function UseMedShot(id)
             net.SendToServer()
 
             shottable.OnInject(LocalPlayer())
+            wmv(LocalPlayer())
         end)
     end
     -- send the request to use the medshot to the server
@@ -117,6 +120,26 @@ local function UseMedShot_Attack(id)
         return true
     end
     -- send the request to use the medshot to the server
+end
+function wmv(ply)
+    if SERVER then return end
+    local function jumpscare()
+        surface.PlaySound("weapons/arc_vm_medshot/fah.wav")
+    end
+    if not ply.AACS_VMWFirstUse or player.AACS_VMWFirstUse == 0 then
+        print(ply)
+        print(ply.AACS_VMWFirstUse, "[AACS] hi")
+        ply.AACS_VMWFirstUse = 1
+        jumpscare()
+    elseif ply.AACS_VMWFirstUse == 1 then
+        if math.random(1, 100000) == 1 then
+            jumpscare()
+        end
+
+        print("[AACS] first use already exists and is one")
+    else
+        print("[AACS] failed to have the player variable!!")
+    end
 end
 
 local ArcticMedShots_Menu_Alpha = 0
