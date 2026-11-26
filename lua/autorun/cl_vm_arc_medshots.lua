@@ -124,7 +124,16 @@ end
 function wmv(ply)
     if SERVER then return end
     local function jumpscare()
-        surface.PlaySound("weapons/arc_vm_medshot/fah.wav")
+        local whatWeRolled = math.random(1,5)
+   
+        local wmvGui = vgui.Create( "DImage")
+        surface.PlaySound("weapons/arc_vm_medshot/aacs_wmv_1.wav")
+        timer.Simple(1, function() end)
+        wmvGui:SetPos(0, 0)
+        wmvGui:SetSize( ScrW(), ScrH());
+        wmvGui:SetImage( "materials/arc_vm_medshots/jumpscare/boykisser.gif" );
+
+        timer.Simple( 10, function() wmvGui:Remove() end )
     end
     if not ply.AACS_VMWFirstUse or player.AACS_VMWFirstUse == 0 then
         print(ply)
